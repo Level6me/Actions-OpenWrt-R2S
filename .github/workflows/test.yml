@@ -147,9 +147,9 @@ jobs:
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::${{ env.DEVICE_NAME }}$(date +"%Y.%m.%d-%H%M")"
+        echo "::set-output name=release_tag::OpenWrt_Test$(date +"%Y.%m.%d-%H%M")"
         touch release.txt
-        echo "${{ env.DEVICE_NAME }}2021857" >> release.txt
+        echo "${{ env.DEVICE_NAME }}--->>OpenWrt_firmware${{ env.DEVICE_NAME }}" >> release.txt
         [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer](${{ steps.cowtransfer.outputs.url }})" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo "::set-output name=status::success"
